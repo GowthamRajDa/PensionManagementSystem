@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div style="height: 3vh;"></div>
+      <div class="header">
+        <h2>Enter your Details</h2>
+        <div style="height: 3vh;"></div>
+        <h6>Please enter your Aadhar Number</h6>
+        <div style="height: 1vh;"></div>
+        <form #getForm="ngForm" (ngSubmit)="GetAadharDetails(getForm.value)">
+          <div class="form-group">
+            <input (change)="invalidDetails=false"
+            placeholder="Aadhar Number"
+              type="number"
+              class="form-control"
+              id="AadharNumber"
+              required 
+              ngModel
+              name="AadharNumber"
+            />
+            <p class="text-danger" [hidden]="!invalidDetails" >{{errorMessage}}</p>
+            <button class="btn btn-success" [disabled]="!getForm.valid">Get Details</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />

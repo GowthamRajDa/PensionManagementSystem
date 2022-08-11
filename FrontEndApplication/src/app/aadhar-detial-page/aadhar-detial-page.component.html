@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="header">
+        <h2>Member Details Page</h2>
+        <div>
+          <label>Name : </label><span>{{ aadharDetails?.name }}</span>
+          <br>
+          <label>AadharNumber : </label><span>{{ aadharDetails?.aadharNumber }}</span>
+          <br>
+          <label>Date of Birth : </label><span>{{ aadharDetails?.dob }}</span>
+          <br>
+          <label>PAN : </label><span>{{ aadharDetails?.pan }}</span>
+          <br>
+          <label>Salary Earned : </label><span>{{ aadharDetails?.salaryEarned }}</span>
+          <br>
+          <label>Allowances : </label><span>{{ aadharDetails?.allowances }}</span>
+          <br>
+          <label>Pension Type : </label><span>{{ aadharDetails?.classifcation }}</span>
+          <br>
+          <div>
+            <br>
+            <h5>Bank Details</h5>
+            <label>Bank Name  : </label><span>{{ aadharDetails?.bankName }}</span>
+            <br>
+            <label>Account Number : </label><span>{{ aadharDetails?.accountNumber }}</span>
+            <br>
+            <label>Bank Type : </label><span>{{ aadharDetails?.banktype }}</span>
+            <br>
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <button
+                class="btn btn-outline-primary"
+                (click)="ProcessPension()"
+              >
+                Process Pension
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height: 5vh;"></div>
+<app-pension-details
+  [pensionDetails]="pensionDetails"
+  [hidden]="pensionDetails == null"
+></app-pension-details>
+<div class="col-md-12">
+  <button id="logout" (click)="logout()" class="btn btn-outline-dark">Log out</button>
+</div>
