@@ -1,0 +1,7 @@
+{"properties": [
+  {
+    "name": "CustomVariables.PensionDetailsURL",
+    "type": "java.lang.String",
+    "description": "This is used to change the IP of Process pension data"
+  }
+]}
