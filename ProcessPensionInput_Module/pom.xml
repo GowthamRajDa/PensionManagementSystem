@@ -7,14 +7,14 @@
 		<version>2.7.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.PensionManagementSystem</groupId>
-	<artifactId>ProcessPensionInput</artifactId>
+	<groupId>com.pensionManagementSystem</groupId>
+	<artifactId>ProcessPensionInput_Module</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProcessPensionInput</name>
+	<name>ProcessPensionInput_Module</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>16</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,7 +64,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>Process_Pension_Service</finalName>
+		<finalName>ProcessPensionInput_Module</finalName>
 	</build>
 
 </project>

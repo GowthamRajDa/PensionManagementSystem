@@ -7,13 +7,13 @@
 		<version>2.7.1</version>
 		<relativePath />
 	</parent>
-	<groupId>com.Project</groupId>
-	<artifactId>PensionerDetials</artifactId>
+	<groupId>com.pensionManagementSystem</groupId>
+	<artifactId>PensionerDetials_Module</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PensionerDetials</name>
+	<name>PensionerDetials_Module</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -69,7 +69,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>Pensioner_Detail_Service</finalName>
+		<finalName>PensionerDetials_Module</finalName>
 	</build>
 
 </project>
