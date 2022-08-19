@@ -69,7 +69,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>PensionerDetials_Module</finalName>
+		<finalName>Pensioner_Detail_Service</finalName>
 	</build>
 
 </project>

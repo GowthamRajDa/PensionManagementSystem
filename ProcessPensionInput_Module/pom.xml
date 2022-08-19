@@ -64,7 +64,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>ProcessPensionInput_Module</finalName>
+		<finalName>Process_Pension_Service</finalName>
 	</build>
 
 </project>

@@ -95,7 +95,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>Authorization_Module</finalName>
+		<finalName>Authorization_Service</finalName>
 	</build>
 
 </project>
