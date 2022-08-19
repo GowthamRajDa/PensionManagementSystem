@@ -16,7 +16,8 @@ phases:
     - echo Build started on `date`
     - echo $IMAGE_URI
     - mvn clean package -Ddockerfile.skip -DskipTests
-    - docker build --tag $IMAGE_URI .
+    - docker build -t authorization-service .
+    - docker tag authorization-service $REPOSITORY_URI:authorization-service
   post_build:
     commands:
     - printenv
