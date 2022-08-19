@@ -14,7 +14,7 @@ phases:
     commands:
     - echo Build started on `date`
     - echo $IMAGE_URI
-    - mvn clean package -Ddockerfile.skip
+    - mvn clean package -Ddockerfile.skip -DskipTests
     - docker build --tag $IMAGE_URI .
   post_build:
     commands:
