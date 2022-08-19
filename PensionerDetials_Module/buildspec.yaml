@@ -1,0 +1,32 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  pre_build:
+    commands:
+    - cd PensionerDetials_Module
+    - echo Logging in to Amazon ECR...
+    - aws --version
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 860061945305.dkr.ecr.ap-south-1.amazonaws.com
+    - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+    - IMAGE_URI=${REPOSITORY_URI}:${TAG}
+  build:
+    commands:
+    - echo Build started on `date`
+    - echo $IMAGE_URI
+    - mvn clean package -Ddockerfile.skip -DskipTests
+    - docker build -t pensioner-detail-service .
+    - docker tag pensioner-detail-service $REPOSITORY_URI:pensioner-detail-service
+  post_build:
+    commands:
+    - printenv
+    - echo Build completed on `date`
+    - echo $(docker images)
+    - echo Pushing docker image
+    - docker push ${REPOSITORY_URI}:pensioner-detail-service
+    - echo push completed
+    - printf '[{"name":"pensioner-detail-service","imageUri":"%s"}]' ${REPOSITORY_URI}:pensioner-detail-service > imagedefinitions.json
+artifacts:
+  files:
+  - PensionerDetials_Module/imagedefinitions.json

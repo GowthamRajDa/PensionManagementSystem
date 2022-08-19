@@ -5,6 +5,6 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:ap-south-1:860061945305:task-definition/Gowtham-PMS:3"
         LoadBalancerInfo:
-          ContainerName: "authorization-service"
-          ContainerPort: "8080"
+          ContainerName: "pensioner-detail-service"
+          ContainerPort: "8081"
           PlatformVersion: "LATEST"
