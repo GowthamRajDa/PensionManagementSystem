@@ -25,7 +25,7 @@ phases:
     - echo Pushing docker image
     - docker push ${REPOSITORY_URI}:authorization-service
     - echo push completed
-    - printf '[{"name":"%s","imageUri":"%s"}]' ${REPOSITORY_URI}:authorization-service > imagedefinitions.json
+    - printf '[{"name":"authorization-service","imageUri":"%s"}]' ${REPOSITORY_URI}:authorization-service > imagedefinitions.json
 artifacts:
   files:
   - imagedefinitions.json
