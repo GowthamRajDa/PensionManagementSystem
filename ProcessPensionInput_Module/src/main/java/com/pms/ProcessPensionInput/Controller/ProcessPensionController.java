@@ -30,6 +30,15 @@ public class ProcessPensionController {
 	@Value("${CustomVariables.PensionDetailsURL}")
 	private String pensionDetailsURL;
 
+	/**
+	 * This Method will return the Process pension when Aadhar number provider
+	 * 
+	 * @param requestHeader
+	 * @param aadharNumber
+	 * @return ProcessedPensionModel
+	 * 
+	 */
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "/ProcessPension/{aadharNumber}")
 	public ResponseEntity<ProcessedPensionModel> ProcessPension(@RequestHeader HttpHeaders requestHeader,
@@ -38,14 +47,13 @@ public class ProcessPensionController {
 		PensionerDetialsModel pensionDetails = GetDetailByAadhar(requestHeader, aadharNumber);
 
 		HttpHeaders Responseheader = new HttpHeaders();
-		
-		if(pensionDetails==null) {
-			ResponseEntity<ProcessedPensionModel> response = new ResponseEntity<ProcessedPensionModel>(
-					null, Responseheader, HttpStatus.NOT_FOUND);
+
+		if (pensionDetails == null) {
+			ResponseEntity<ProcessedPensionModel> response = new ResponseEntity<ProcessedPensionModel>(null,
+					Responseheader, HttpStatus.NOT_FOUND);
 			return response;
 		}
-		
-		
+
 		String aadhar = pensionDetails.getAadharNumber();
 
 		if (aadharNumber.equals(aadhar)) {
@@ -53,35 +61,54 @@ public class ProcessPensionController {
 			Long allowance = pensionDetails.getAllowances();
 			String classification = pensionDetails.getClassifcation();
 			String bankType = pensionDetails.getBanktype();
-			
+
 			processedPensionModel.setAadharNumber(aadhar);
 			processedPensionModel.setPensionAmount(calculatePension(classification, salary, allowance));
 			processedPensionModel.setServiceCharge(calculateServiceCharge(bankType));
 			ResponseEntity<ProcessedPensionModel> response = new ResponseEntity<ProcessedPensionModel>(
 					processedPensionModel, Responseheader, HttpStatus.OK);
-			log.info("Aadharcard found: "+processedPensionModel);
+			log.info("Aadharcard found: " + processedPensionModel);
+
 			return response;
 		} else {
-			log.info("Aadharcard Notfound: "+processedPensionModel);
+			log.info("Aadharcard Notfound: " + processedPensionModel);
+
 			return null;
 		}
 	}
+
+	/**
+	 * This method will act as Service layer which fetch the aadhar details using
+	 * aadharnumber
+	 * 
+	 * @param header
+	 * @param aadharNumber
+	 * @return PensionerDetialsModel
+	 */
 
 	public PensionerDetialsModel GetDetailByAadhar(HttpHeaders header, String aadharNumber) {
 
 		RequestEntity<Void> request = RequestEntity.get(pensionDetailsURL + aadharNumber).headers(header).build();
 		try {
-			ResponseEntity<PensionerDetialsModel> response = restTemplate.exchange(request, PensionerDetialsModel.class);
+			ResponseEntity<PensionerDetialsModel> response = restTemplate.exchange(request,
+					PensionerDetialsModel.class);
 			PensionerDetialsModel pensionDetails = response.getBody();
 			return pensionDetails;
-		}catch(Exception e) {
-			log.error(aadharNumber+": Data Not found");
+		} catch (Exception e) {
+			log.error(aadharNumber + ": Data Not found");
 		}
-		
-		return null;
-		
 
+		return null;
 	}
+
+	/**
+	 * This method will calulate the Pension Amount
+	 * 
+	 * @param classification
+	 * @param salary
+	 * @param allowance
+	 * @return Double
+	 */
 
 	public Double calculatePension(String classification, Long salary, Long allowance) {
 		if (classification.equalsIgnoreCase("Self")) {
@@ -92,6 +119,13 @@ public class ProcessPensionController {
 		return null;
 
 	}
+
+	/**
+	 * This Method will return the Commission fee according to Bank
+	 * 
+	 * @param bankType
+	 * @return Integer
+	 */
 
 	public Integer calculateServiceCharge(String bankType) {
 		if (bankType.equalsIgnoreCase("private")) {

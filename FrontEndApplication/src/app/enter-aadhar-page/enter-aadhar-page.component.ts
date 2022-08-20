@@ -32,7 +32,7 @@ export class EnterAadharPageComponent implements OnInit {
     if (aadhar.length == 12) {
       this.http
         .get<aadharDetails>(
-          'http://localhost:8081/PensionerDetailByAadhaar/' +
+          this.service.ipaddress+':8081/PensionerDetailByAadhaar/' +
             GetData['AadharNumber'],
           {
             headers: new HttpHeaders({

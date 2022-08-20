@@ -21,6 +21,13 @@ import com.pms.auth.utilities.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author Gowtham
+ * This Class contains method to filter the valid Requests which contain valid JWT Token in Header
+ *
+ */
+
 @Slf4j
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {

@@ -3,10 +3,13 @@ package com.pms.auth;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+/**
+ * @version authorization-service v1
+ * @author Gowtham
+ * @category Authoziation Microservice
+ */
 
 @SpringBootApplication
-@EnableSwagger2
 public class AuthorizationApplication {
 
 	public static void main(String[] args) {

@@ -13,11 +13,22 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * 
+ * @author Gowtham
+ * 
+ * JWT Algorithm used : HS512
+ * secret code is getting from application.properties file
+ * Utility Class contains all the JWT token utility methods
+ * 
+ */
+
 @Component
 public class JwtUtil {
 
 	public static final long JWT_TOKEN_VALIDITY = 3 * 60 * 60;
-
+	
+	//Getting secret code from application.properties file
 	@Value("${jwt.secretCode}")
 	private String secret;
 

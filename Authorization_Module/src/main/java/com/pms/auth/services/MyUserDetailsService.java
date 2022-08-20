@@ -31,26 +31,46 @@ public class MyUserDetailsService implements UserDetailsService, CommandLineRunn
 	@Autowired
 	private AuthentificationRepository userRepo;
 
+	/**
+	 * 
+	 * UserName Provider This method checks the username and provide the user when
+	 * the user found in database
+	 * 
+	 * @param Username
+	 * @return User
+	 * 
+	 */
+
 	@Override
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 		JwtRequest myUser;
 		if (userRepo.existsById(username)) {
-
 			myUser = userRepo.findById(username).get();
 			String password = myUser.getPassword();
 			log.info("User is found :" + username);
 			return new User(username, password, new ArrayList<>());
+			
 		} else {
+			
 			log.debug("User not found with username" + username);
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
 
 	}
 
+	/**
+	 * 
+	 * Override method of run This will run when the spring application starts
+	 * This method will load all the users from Resourse csv file to H2 Database
+	 * 
+	 * bCryptPasswordEncoder used for Password Encoding path: /h2-console
+	 * 
+	 */
+
 	@Override
 	public void run(String... args) throws Exception {
 
-//		File UserDetialsCsv = new File("src/main/resources/userCredentials.csv");
+		// File UserDetialsCsv = new File("src/main/resources/userCredentials.csv");
 		InputStream inputStream = getClass().getResourceAsStream("/userCredentials.csv");
 		Scanner scnObj = new Scanner(inputStream);
 		scnObj.nextLine(); // for header scan
@@ -59,11 +79,9 @@ public class MyUserDetailsService implements UserDetailsService, CommandLineRunn
 
 			String[] userdetial = scnObj.nextLine().split(",");
 			String username = userdetial[0];
-
 			String password = userdetial[1];
 
 			BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
-
 			String Encodedpassword = bCryptPasswordEncoder.encode(password);
 
 			JwtRequest myUser = new JwtRequest(username, Encodedpassword);

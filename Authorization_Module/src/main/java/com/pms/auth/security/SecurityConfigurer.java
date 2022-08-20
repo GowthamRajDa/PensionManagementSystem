@@ -14,6 +14,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.pms.auth.services.MyUserDetailsService;
 
+/**
+ * 
+ * @author Gowtham
+ * This class contains methods to exclude the paths from the Spring security
+ *
+ */
+
+@SuppressWarnings("deprecation")
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
@@ -42,8 +50,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests()
-				.antMatchers("/h2-console/**", "/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**",
-						"/swagger-ui.html")
+				.antMatchers("/h2-console/**", "/v3/api-docs/**", "/configuration/**", "/swagger*/**", "/webjars/**",
+						"/swagger-ui**")
 				.permitAll();
 		httpSecurity.csrf().disable();
 		httpSecurity.headers().frameOptions().disable();

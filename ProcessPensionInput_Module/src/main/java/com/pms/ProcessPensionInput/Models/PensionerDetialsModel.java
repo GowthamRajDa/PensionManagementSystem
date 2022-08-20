@@ -8,6 +8,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * 
+ * @author Gowtham
+ * Pension Detail Model contain all the pension Details
+ *
+ */
+
 @Component
 @Getter
 @Setter

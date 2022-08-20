@@ -8,6 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+/**
+ * 
+ * @author Gowtham
+ * Processed pension model will have the Process pension details
+ *
+ */
+
 @Component
 @Getter
 @Setter

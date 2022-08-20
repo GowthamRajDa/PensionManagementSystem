@@ -33,15 +33,24 @@ public class PensionDetailsController {
 	@Autowired
 	PensionDetailsLoader pensionDetailsLoader;
 
+	/**
+	 * 
+	 * @param requestHeader
+	 * @param aadharNumber
+	 * @return PensionerDetialsModel as Response
+	 * 
+	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/PensionerDetailByAadhaar/{aadharNumber}")
 	public ResponseEntity<PensionerDetialsModel> GetPensionerDetails(@RequestHeader HttpHeaders requestHeader,
 			@PathVariable String aadharNumber) {
 
 		HttpHeaders Responseheader = new HttpHeaders();
-
+		
+		//If the request doesn't have Authorization Header
 		if (!requestHeader.containsKey("Authorization")) {
-
+			
+			Responseheader.add("Warning", "Unauthorized Request Please add the Auth Key on Header");
 			ResponseEntity<PensionerDetialsModel> response = new ResponseEntity<PensionerDetialsModel>(null,
 					Responseheader, HttpStatus.UNAUTHORIZED);
 			log.debug("Unauthorized Request");
@@ -78,7 +87,16 @@ public class PensionDetailsController {
 		}
 
 	}
-
+	
+	
+	/**
+	 * 
+	 * Request checker will check the request is authorized or Not
+	 * @param requestHeader
+	 * @return true when the JWT Key is valid
+	 * 
+	 */
+	
 	public boolean authKeyChecker(HttpHeaders requestHeader) {
 
 		RequestEntity<Void> request = RequestEntity.get(authUrl).headers(requestHeader).build();

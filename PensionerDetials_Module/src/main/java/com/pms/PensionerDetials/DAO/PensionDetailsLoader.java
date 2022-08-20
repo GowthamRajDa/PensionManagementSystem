@@ -15,6 +15,14 @@ import com.pms.PensionerDetials.Model.PensionerDetialsModel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * @author Gowtham
+ * 
+ * This class contains the Data Access Object for Pension Details Database.
+ *
+ */
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
@@ -61,7 +69,13 @@ public class PensionDetailsLoader implements CommandLineRunner {
 		pensionerDetailsRepo.saveAll(pensionDetailsList);
 
 	}
-
+	
+	/**
+	 * It will provide full Aadhar details by AadharNumber
+	 * @param aadhar
+	 * @return PensionerDetialsModel
+	 */
+	
 	public PensionerDetialsModel getPensionerByAadhar(String aadhar) {
 
 		PensionerDetialsModel pensionDetials;

@@ -11,7 +11,11 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class TokenChecker {
 
-
+/**
+ * This method returns true when request with Valid JWT Token
+ * @param Request with valid JWT Token
+ * @return Boolean
+ */
 	@GetMapping(path = "/checkToken")
 	public Boolean tokenChecker() {
 		log.info("Valid Request,Provided token is a Valid Token");

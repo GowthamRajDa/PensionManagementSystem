@@ -10,6 +10,12 @@ export class MyServiceService {
   private jwtToken?:jwtToken;
   public aadharDetails?:aadharDetails;
 
+  //Enter the Public IP below
+
+  //public ipaddress:String="http://localhost";
+  public ipaddress:String="http://13.233.39.126";
+
+
   constructor() { }
 
   updateAadharDetails(aadhar:aadharDetails){

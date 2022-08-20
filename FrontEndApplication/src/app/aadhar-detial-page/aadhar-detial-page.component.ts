@@ -38,7 +38,7 @@ export class AadharDetialPageComponent implements OnInit {
   ProcessPension() {
     this.http
       .post<pensionDetails>(
-        'http://localhost:8082/ProcessPension/' +
+        this.service.ipaddress+':8082/ProcessPension/' +
           this.aadharDetails?.aadharNumber,
         '',
         {

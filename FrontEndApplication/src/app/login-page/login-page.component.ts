@@ -3,6 +3,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { jwtToken } from '../Models/jwt.model';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,12 +16,12 @@ export class LoginPageComponent implements OnInit {
   invalidCred: Boolean = false;
 
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private service: MyServiceService) {}
 
   Login(postData: { username: string; password: string }) {
    
       this.http
-        .post<jwtToken>('http://localhost:8080/authenticate', postData)
+        .post<jwtToken>(this.service.ipaddress+':8080/authenticate', postData)
         .pipe(
           map((responsedata: jwtToken) => {
             return responsedata;
