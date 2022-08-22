@@ -13,7 +13,7 @@ export class MyServiceService {
   //Enter the Public IP below
 
   //public ipaddress:String="http://localhost";
-  public ipaddress:String="http://13.233.39.126";
+  public ipaddress:String="http://3.111.35.190";
 
 
   constructor() { }

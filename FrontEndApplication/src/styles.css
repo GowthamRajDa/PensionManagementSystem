@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+app-root{
+    position: relative;
+    top: 10%;
+    left: 200px;
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 20px;
+    
+}
+
+body{
+    position: relative;
+    top: 50px;
+    left: 23%;
+    border-style: hidden;
+    width: 1000px;
+    height: auto;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+html{
+    background-size: cover;
+    background-position: inherit;
+    background-repeat: no-repeat;
+    background-image: url('src/Nature background.jpg');
+}
